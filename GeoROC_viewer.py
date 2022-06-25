@@ -47,7 +47,7 @@ yAxisScatterData = st.sidebar.selectbox('y-axis', el)
 fig = figure(width=600, height=400)
 
 selLatLonList=[]
-legend_it = []
+labelList = []
 for file in tectSettingsContent:
     if file.endswith('.csv'):
         singleTectSetting = tectSettingsPath + tectSettingsFolder + '/' + file
@@ -72,10 +72,10 @@ for file in tectSettingsContent:
            get_line_color=[0, 0, 0],
     )
     selLatLonList.append(layers)
-    c = fig.circle(readTectSetting[xAxisScatterData]/10000, readTectSetting[yAxisScatterData]/10000, color=tuple(randColor))
+    fig.circle(readTectSetting[xAxisScatterData]/10000, readTectSetting[yAxisScatterData]/10000, color=tuple(randColor))
     fig.xaxis.axis_label = xAxisScatterData + ' wt%'
     fig.yaxis.axis_label = yAxisScatterData + ' wt%'
-    legend_it.append((file, [c]))
+    labelList.append(file)
     
 st.pydeck_chart(pdk.Deck(
      map_style='mapbox://styles/mapbox/light-v9',
@@ -89,7 +89,6 @@ st.pydeck_chart(pdk.Deck(
      layers=selLatLonList,
  ))
 
-legend = Legend(items=legend_it)
-fig.add_layout(legend,'left')
-
 st.bokeh_chart(fig)
+
+st.table(labelList)
