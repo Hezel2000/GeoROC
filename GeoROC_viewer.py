@@ -10,16 +10,14 @@ from bokeh.plotting import figure
 from random import randrange
 
 
-# =============================================================================
-# hide_st_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             footer {visibility: hidden;}
-#             header {visibility: hidden;}
-#             </style>
-#             """
-# st.markdown(hide_st_style, unsafe_allow_html=True)
-# =============================================================================
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 st.header('Welcome to GeoROC Viewer')
 
@@ -27,7 +25,6 @@ tectSettingsPath = '/Users/dominik/Documents/GitHub/GeoROC/data/'
 tectSettingsPath = 'data/'
 
 el = pd.read_csv(tectSettingsPath + 'Archean Cratons/Bastar Craton.csv').columns[27:100]
-st.write(el)
 
 tectSettingsFolder = os.listdir(tectSettingsPath)
 
