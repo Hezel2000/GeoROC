@@ -18,6 +18,8 @@ import streamlit as st
 import os
 import pandas as pd
 import numpy as np
+import pydeck as pdk
+from random import randrange
 
 st.header('Welcome to GeoROC Viewer')
 
@@ -29,16 +31,41 @@ st.write(tectSettings)
 tectSettingsFolder = st.sidebar.multiselect('sel', tectSettings[1:],tectSettings[1])
 
 
-tmp = os.listdir(tectSettingsPath + tectSettingsFolder[0])
-for i in tmp:
-    t= tectSettingsPath + tectSettingsFolder[0] + '/' + i
-    st.write(t)
+tectSettingsContent = os.listdir(tectSettingsPath + tectSettingsFolder[0])
+selLatLonList=[]
+for file in tectSettingsContent:
+    if file.endswith('.csv'):
+        singleTectSetting = tectSettingsPath + tectSettingsFolder[0] + '/' + file
+    readTectSetting = pd.read_csv(singleTectSetting)
+    selLatLon = readTectSetting[['Latitude (Min)', 'Longitude (Min)']]
+    selLatLon = selLatLon.rename(columns={'Latitude (Min)':'lat', 'Longitude (Min)':'lon'})
+    layers = pdk.Layer(
+        'ScatterplotLayer',
+           selLatLon,
+           pickable=True,
+           opacity=0.8,
+           stroked=True,
+           filled=True,
+           radius_scale=6,
+           radius_min_pixels=5,
+           radius_max_pixels=100,
+           line_width_min_pixels=1,
+           get_position='[lon, lat]',
+           get_radius="exits_radius",
+           get_fill_color=[randrange(255), randrange(255), randrange(255)],
+           get_line_color=[0, 0, 0],
+    )
+    selLatLonList.append(layers)
 
-def tectSettingMap():
-    tmp = os.listdir(tectSettingsPath + tectSettingsFolder[0])
-    tmp2 = tectSettingsPath + tectSettingsFolder[0] + '/' + tmp[0]
-    tmpTable = pd.read_csv(tmp2)
-    tmp3 = tmpTable[['Latitude (Min)', 'Longitude (Max)']].rename(columns={'Latitude (Min)':'lat', 'Longitude (Max)':'lon'})
 
-
-#st.map(tmp3)
+st.pydeck_chart(pdk.Deck(
+     map_style='mapbox://styles/mapbox/light-v9',
+     initial_view_state=pdk.ViewState(
+         latitude=37.76,
+         longitude=-122.4,
+         zoom=11,
+         height=500,
+         width=800
+     ),
+     layers=selLatLonList,
+ ))
