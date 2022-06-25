@@ -24,6 +24,8 @@ from random import randrange
 st.header('Welcome to GeoROC Viewer')
 
 tectSettingsPath = '/Users/dominik/Documents/GitHub/GeoROC/data/'
+tectSettingsPath = 'data/'
+
 el = pd.read_csv(tectSettingsPath + 'Archean Cratons/Bastar Craton.csv').columns[27:100]
 st.write(el)
 # =============================================================================
