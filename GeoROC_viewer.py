@@ -3,16 +3,17 @@
 
 import streamlit as st
 
+# =============================================================================
+# hide_st_style = """
+#             <style>
+#             #MainMenu {visibility: hidden;}
+#             footer {visibility: hidden;}
+#             header {visibility: hidden;}
+#             </style>
+#             """
+# st.markdown(hide_st_style, unsafe_allow_html=True)
+# =============================================================================
 
-
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 def start():
@@ -44,7 +45,7 @@ def start():
     xAxisScatterData = st.sidebar.selectbox('x-axis', el)
     yAxisScatterData = st.sidebar.selectbox('y-axis', el)
     
-    fig = figure(width=600, height=400)
+    #fig = figure(width=600, height=400)
     
     selLatLonList=[]
     labelList = []
@@ -72,9 +73,11 @@ def start():
                get_line_color=[0, 0, 0],
         )
         selLatLonList.append(layers)
-        fig.circle(readTectSetting[xAxisScatterData]/10000, readTectSetting[yAxisScatterData]/10000, color=tuple(randColor))
-        fig.xaxis.axis_label = xAxisScatterData + ' wt%'
-        fig.yaxis.axis_label = yAxisScatterData + ' wt%'
+# =============================================================================
+#         fig.circle(readTectSetting[xAxisScatterData]/10000, readTectSetting[yAxisScatterData]/10000, color=tuple(randColor))
+#         fig.xaxis.axis_label = xAxisScatterData + ' wt%'
+#         fig.yaxis.axis_label = yAxisScatterData + ' wt%'
+# =============================================================================
         labelList.append(file)
         
     st.pydeck_chart(pdk.Deck(
@@ -89,7 +92,9 @@ def start():
          layers=selLatLonList,
      ))
     
-    st.bokeh_chart(fig)
+# =============================================================================
+#     st.bokeh_chart(fig)
+# =============================================================================
     
     st.table(labelList)
     
