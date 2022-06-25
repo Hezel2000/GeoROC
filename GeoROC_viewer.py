@@ -18,7 +18,7 @@ import streamlit as st
 
 def start():
     import os
-    from bokeh.plotting import figure
+   # from bokeh.plotting import figure
     import pandas as pd
     import numpy as np
     import pydeck as pdk
