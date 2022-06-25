@@ -49,6 +49,9 @@ labelList = []
 for file in tectSettingsContent:
     if file.endswith('.csv'):
         singleTectSetting = tectSettingsPath + tectSettingsFolder + '/' + file
+        
+    singleTectSetting = '/Users/dominik/Documents/GitHub/GeoROC/data/' + 'Archean Cratons/Bastar Craton.csv'
+    
     readTectSetting = pd.read_csv(singleTectSetting)
     selLatLon = readTectSetting[['Latitude (Min)', 'Longitude (Min)']]
     selLatLon = selLatLon.rename(columns={'Latitude (Min)':'lat', 'Longitude (Min)':'lon'})
