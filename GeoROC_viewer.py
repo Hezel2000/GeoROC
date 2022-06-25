@@ -6,7 +6,6 @@ import os
 import pandas as pd
 import numpy as np
 import pydeck as pdk
-from bokeh.plotting import figure
 from random import randrange
 
 
