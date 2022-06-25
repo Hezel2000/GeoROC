@@ -2,26 +2,23 @@
 # -*- coding: utf-8 -*-
 
 import streamlit as st
-
-# =============================================================================
-# hide_st_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             footer {visibility: hidden;}
-#             header {visibility: hidden;}
-#             </style>
-#             """
-# st.markdown(hide_st_style, unsafe_allow_html=True)
-# =============================================================================
-
-
 import os
 import pandas as pd
 import numpy as np
 import pydeck as pdk
 from bokeh.plotting import figure
-from bokeh.models import Legend
 from random import randrange
+
+
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 
 st.header('Welcome to GeoROC Viewer')
 
