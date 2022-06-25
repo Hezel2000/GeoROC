@@ -17,10 +17,10 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 def start():
     import os
+    from bokeh.plotting import figure
     import pandas as pd
     import numpy as np
     import pydeck as pdk
-    from bokeh.plotting import figure
     from random import randrange
     
     st.header('Welcome to GeoROC Viewer')
