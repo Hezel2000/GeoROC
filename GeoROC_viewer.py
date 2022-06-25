@@ -15,10 +15,30 @@ import streamlit as st
 # =============================================================================
 
 
+import os
+import pandas as pd
+import numpy as np
 
-st.header('Welcome to the Home of Geoscience Apps')
+st.header('Welcome to GeoROC Viewer')
 
-st.subheader('Choose where to go next:')
+tectSettingsPath = '/Users/dominik/Documents/GitHub/GeoROC/data/'
+
+tectSettings = os.listdir(tectSettingsPath)
+st.write(tectSettings)
+
+tectSettingsFolder = st.sidebar.multiselect('sel', tectSettings[1:],tectSettings[1])
 
 
-st.sidebar.multiselect('sel',[1,2,3])
+tmp = os.listdir(tectSettingsPath + tectSettingsFolder[0])
+for i in tmp:
+    t= tectSettingsPath + tectSettingsFolder[0] + '/' + i
+    st.write(t)
+
+def tectSettingMap():
+    tmp = os.listdir(tectSettingsPath + tectSettingsFolder[0])
+    tmp2 = tectSettingsPath + tectSettingsFolder[0] + '/' + tmp[0]
+    tmpTable = pd.read_csv(tmp2)
+    tmp3 = tmpTable[['Latitude (Min)', 'Longitude (Max)']].rename(columns={'Latitude (Min)':'lat', 'Longitude (Max)':'lon'})
+
+
+#st.map(tmp3)
