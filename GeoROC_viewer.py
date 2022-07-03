@@ -40,6 +40,7 @@ for i in st.session_state.tectSettingsFolder:
 #---------------------------------#  
 def welcome():
     st.header('Welcome to GeoROC Viewer')
+    st.write("The world's most advanced data viewer")
     
     
 
@@ -188,7 +189,13 @@ def REE():
 #------ d  --------------------#
 #---------------------------------#
 def d():
-    st.write('d')
+    st.write('Cosmochemistry Papers')
+
+    import streamlit.components.v1 as components
+
+    # embed streamlit docs in a streamlit app
+
+    components.iframe("https://cosmochemistry-papers.com", width=800, height=1000, scrolling=True)
     
 
 #---------------------------------#
@@ -244,7 +251,7 @@ def test():
 #------ Main Page Sidebar --------#
 #---------------------------------#  
 
-st.sidebar.image('https://raw.githubusercontent.com/Hezel2000/GeoROC/main/images/Goethe-Logo.pdf')
+st.sidebar.image('https://raw.githubusercontent.com/Hezel2000/GeoROC/main/images/Goethe-Logo.jpg', width=150)
 
 page_names_to_funcs = {
     'Welcome': welcome,
