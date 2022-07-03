@@ -266,5 +266,5 @@ demo_name = st.sidebar.radio("Select your Visualisation", page_names_to_funcs.ke
 page_names_to_funcs[demo_name]()
 
 
-link = '[Back to Mainpage](http://www.geoplatform.com)'
+link = '[Back to Geoplatform](http://www.geoplatform.de)'
 st.sidebar.markdown(link, unsafe_allow_html=True)
