@@ -119,6 +119,7 @@ def scatterplots():
 #---------------------------------#  
 def paired_plots():
     #import seaborn as sns
+
     st.sidebar.header('all cool')
     st.sidebar.info('This is a purely informational message')
     st.sidebar.success('This is a success message!')
@@ -159,6 +160,7 @@ def REE():
     #readTectSetting.drop_duplicates(inplace=True)  # Remove duplicates
     
     # Drop all the column I don't use for now
+
     el = ['La', 'Ce', 'Pr', 'Nd', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu']
     ci = [2,2,2,2,2,2,2,2,2,2,2,2,2,2000]
     data = readTectSetting[el]
@@ -184,14 +186,14 @@ def REE():
 
 #---------------------------------#
 #------ d  --------------------#
-#---------------------------------#  
+#---------------------------------#
 def d():
     st.write('d')
     
 
 #---------------------------------#
 #------ Test  --------------------#
-#---------------------------------#  
+#---------------------------------#
 def test():
     from bokeh.layouts import column, row
     from bokeh.models import CustomJS, Select
@@ -241,6 +243,8 @@ def test():
 #---------------------------------#
 #------ Main Page Sidebar --------#
 #---------------------------------#  
+
+st.sidebar.write('Hello')
 
 page_names_to_funcs = {
     'Welcome': welcome,
