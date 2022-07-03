@@ -95,19 +95,19 @@ def scatterplots():
             labelList.append(file)
             
             
-            st.bokeh_chart(fig)
+        st.bokeh_chart(fig)
             
-            st.pydeck_chart(pdk.Deck(
-                    map_style='mapbox://styles/mapbox/light-v9',
-                    initial_view_state=pdk.ViewState(
-                        latitude=50.110924,
-                        longitude=8.682127,
-                        zoom=1,
-                        height=500,
-                        width=800
-                    ),
-                    layers=selLatLonList,
-                ))
+    st.pydeck_chart(pdk.Deck(
+            map_style='mapbox://styles/mapbox/light-v9',
+            initial_view_state=pdk.ViewState(
+                latitude=50.110924,
+                longitude=8.682127,
+                zoom=1,
+                height=500,
+                width=800
+            ),
+            layers=selLatLonList,
+        ))
         
     
     
@@ -244,7 +244,7 @@ def test():
 #------ Main Page Sidebar --------#
 #---------------------------------#  
 
-st.sidebar.write('Hello')
+st.sidebar.image('https://raw.githubusercontent.com/Hezel2000/GeoROC/main/images/Goethe-Logo.pdf')
 
 page_names_to_funcs = {
     'Welcome': welcome,
